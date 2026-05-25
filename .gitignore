@@ -48,5 +48,8 @@ Thumbs.db
 # Cloudflare
 .wrangler/
 
+# Local startup script (machine-specific, not for repo)
+startup.sh
+
 # USDA data cache (large, re-downloaded on first run)
 backend/src/data/
