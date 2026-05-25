@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "NutritionTracker",
+    "slug": "nutrition-tracker",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#111827"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#111827"
+      },
+      "package": "com.nutritiontracker.app"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        { "cameraPermission": "Allow NutritionTracker to access camera for barcode scanning." }
+      ]
+    ],
+    "scheme": "nutrition-tracker",
+    "experiments": {
+      "typedRoutes": false
+    }
+  }
+}

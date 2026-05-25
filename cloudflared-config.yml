@@ -1,0 +1,16 @@
+# Copy this to ~/.cloudflared/config.yml
+# Replace TUNNEL_ID with the ID printed by: cloudflared tunnel create nutrition-tracker
+# Replace yourdomain.com with your actual domain
+
+tunnel: TUNNEL_ID
+credentials-file: /home/travis/.cloudflared/TUNNEL_ID.json
+
+ingress:
+  # Backend API
+  - hostname: api.yourdomain.com
+    service: http://localhost:3002
+  # Web frontend
+  - hostname: app.yourdomain.com
+    service: http://localhost:5173
+  # Catch-all (required)
+  - service: http_status:404

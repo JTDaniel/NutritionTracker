@@ -1,0 +1,41 @@
+services:
+  mongo:
+    image: mongo:7
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: nutrition_tracker
+
+  backend:
+    build: ./backend
+    ports:
+      - "3002:3001"
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/nutrition_tracker
+      PORT: 3001
+      JWT_SECRET: change-this-to-a-long-random-secret-in-production
+      CORS_ORIGINS: https://yourapp.pages.dev
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+  # Optional: run the Cloudflare tunnel alongside the app
+  # Requires ~/.cloudflared/config.yml to be configured
+  # cloudflared:
+  #   image: cloudflare/cloudflared:latest
+  #   command: tunnel run
+  #   volumes:
+  #     - /home/travis/.cloudflared:/etc/cloudflared
+  #   depends_on:
+  #     - backend
+  #     - frontend
+  #   network_mode: host
+
+volumes:
+  mongo_data:
