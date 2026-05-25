@@ -1,4 +1,5 @@
-# Proxy all API requests to the local backend via Cloudflare Tunnel
-# Update this URL each time the tunnel restarts (or use a named tunnel with a domain for a stable URL)
-# Then commit and push — Cloudflare Pages auto-redeploys in ~1 minute
-/api/* https://YOUR-TUNNEL-URL.trycloudflare.com/api/:splat 200
+# API proxy is handled by functions/api/[[path]].js (Pages Function)
+# Set TUNNEL_URL environment variable in Cloudflare Pages dashboard
+
+# SPA fallback — all routes serve index.html
+/*    /index.html    200
